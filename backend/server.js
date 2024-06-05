@@ -26,6 +26,9 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+cors({ credentials: true, origin: true , exposedHeaders: ['Access-Control-Allow-Origin'] , allowedHeaders: ['Access-Control-Allow-Origin'] , methods: ['GET', 'POST', 'PUT', 'DELETE'] , optionsSuccessStatus: 200});
+
+
 
 app.listen(4000, () => {
     console.log('Server is running on port 3000!');
