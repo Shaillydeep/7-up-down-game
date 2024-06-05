@@ -1,5 +1,7 @@
 const express = require('express');
 
+const cors = require('cors');
+
 const nums = require('./controllers/nums');
 
 const numbersList = () => {
@@ -23,13 +25,14 @@ const luckyWin = 'luckyWin';
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
-app.listen(3000, () => {
+app.listen(4000, () => {
     console.log('Server is running on port 3000!');
 });
 
 
-app.get('/random-numbers', (req, res) => {
+app.get('/get-dice-roll', (req, res) => {
     numbers = numbersList();
     /* numbers = [3,4] */
     console.log(numbers);
