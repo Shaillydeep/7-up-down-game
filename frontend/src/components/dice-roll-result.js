@@ -13,17 +13,17 @@ export default function DiceRollResult({ diceRollValue, displayDiceRoll }) {
                         <Typography variant="h5">Dice Roll Result </Typography>
                     </Grid>
                     <Grid item xs={2}>
-                        <Box sx={{ border: 1, borderRadius: 2, padding: 1 , maxWidth: 30}}>  {/* Added Box and styles */}
+                        <Box sx={{ border: 1, borderRadius: 2, padding: 1, maxWidth: 30 }}>  {/* Added Box and styles */}
                             <Typography variant="h6">{diceRollValue[0]}</Typography>
                         </Box>
                     </Grid>
                     <Grid item xs={2}>
-                        <Box sx={{ border: 1, borderRadius: 2, padding: 1 , margin: 1, maxWidth: 30}}>  {/* Added Box and styles */}
+                        <Box sx={{ border: 1, borderRadius: 2, padding: 1, margin: 1, maxWidth: 30 }}>  {/* Added Box and styles */}
                             <Typography variant="h6">{diceRollValue[1]}</Typography>
                         </Box>
                     </Grid>
-              </Grid>
-              
+                </Grid>
+
             )}
         </div>
     );
