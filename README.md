@@ -2,7 +2,7 @@
 
 ## Description
 
-The 7-up-down-game is a simple dice guessing game where the player tries to guess wether sum of 2 randomly thrown dice will be lesser than, equal to or greater than 7.
+The 7-up-down-game is a simple dice guessing game where the player tries to guess whether sum of 2 randomly thrown dice will be lesser than, equal to or greater than 7.
 
 ## Installation
 
