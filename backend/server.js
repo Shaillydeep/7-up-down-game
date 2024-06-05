@@ -25,7 +25,7 @@ const luckyWin = 'luckyWin';
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors('*'));
 cors({ credentials: true, origin: true , exposedHeaders: ['Access-Control-Allow-Origin'] , allowedHeaders: ['Access-Control-Allow-Origin'] , methods: ['GET', 'POST', 'PUT', 'DELETE'] , optionsSuccessStatus: 200});
 
 
