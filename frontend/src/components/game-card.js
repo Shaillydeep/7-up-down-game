@@ -25,6 +25,7 @@ export default function BasicCard() {
         setBet(val);
         setAmount(amount - val);
         setDisableBet(true);
+        console.log(process.env.REACT_APP_BACKEND_URI)
     }
 
     const handleRoll = () => {
@@ -42,19 +43,19 @@ export default function BasicCard() {
         console.log('Amount:', amount);
         console.log('Get Dice Roll');
 
-        axios.get('http://localhost:4000/get-dice-roll')
+        axios.get(`${process.env.REACT_APP_BACKEND_URI}get-dice-roll`, { headers: { 'Access-Control-Allow-Origin': '*' } })
             .then(response => {
-                console.log(response.data);
-                setDiceRollValue(response.data);
-                setDisplayDiceRoll(true);
+            console.log(response.data);
+            setDiceRollValue(response.data);
+            setDisplayDiceRoll(true);
             })
             .catch(error => {
-                console.log(error);
+            console.log(error);
             });
 
         switch (option) {
             case 'Lucky 7':
-                axios.get('http://localhost:4000/check-choice/luckyNumber')
+                axios.get(`${process.env.REACT_APP_BACKEND_URI}check-choice/luckyNumber`)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -64,7 +65,7 @@ export default function BasicCard() {
                 break;
 
             case 'Below 7':
-                axios.get('http://localhost:4000/check-choice/below7')
+                axios.get(`${process.env.REACT_APP_BACKEND_URI}check-choice/below7`)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -74,7 +75,7 @@ export default function BasicCard() {
                 break;
 
             case 'Above 7':
-                axios.get('http://localhost:4000/check-choice/above7')
+                axios.get(`${process.env.REACT_APP_BACKEND_URI}check-choice/above7`)
                     .then(response => {
                         console.log(response.data);
                     })
@@ -86,7 +87,7 @@ export default function BasicCard() {
                 break;
         }
 
-        axios.post('http://localhost:4000/update-amount', {
+        axios.post(`${process.env.REACT_APP_BACKEND_URI}update-amount`, {
             amount: amount,
             bet: bet
         })
@@ -100,8 +101,6 @@ export default function BasicCard() {
                 console.log(error);
             });
 
-        setDisableBet(false);
-        setDisplayDiceRoll(false);
 
     }
 
