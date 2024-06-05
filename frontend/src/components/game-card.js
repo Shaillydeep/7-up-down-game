@@ -45,12 +45,12 @@ export default function BasicCard() {
 
         axios.get(`${process.env.REACT_APP_BACKEND_URI}get-dice-roll`, { headers: { 'Access-Control-Allow-Origin': '*' } })
             .then(response => {
-            console.log(response.data);
-            setDiceRollValue(response.data);
-            setDisplayDiceRoll(true);
+                console.log(response.data);
+                setDiceRollValue(response.data);
+                setDisplayDiceRoll(true);
             })
             .catch(error => {
-            console.log(error);
+                console.log(error);
             });
 
         switch (option) {
@@ -131,7 +131,7 @@ export default function BasicCard() {
                     </Grid>
 
                     <Grid item xs={12} align='center'>
-                        <Typography  color="text.secondary">
+                        <Typography color="text.secondary">
                             Choose bet amount:
                         </Typography>
                     </Grid>
@@ -161,7 +161,7 @@ export default function BasicCard() {
 
                     <Grid item xs={12} align='left'>
                         <Button sx={{ margin: '6px' }} type="submit" color='primary' variant='outlined' size="medium" onClick={handleRoll} disabled={displayDiceRoll}>Roll</Button>
-                    
+
                         <Button sx={{ margin: '6px' }} type="submit" color='primary' variant='outlined' size="medium" onClick={handlePlayAgain}>Play Again</Button>
                     </Grid>
 
