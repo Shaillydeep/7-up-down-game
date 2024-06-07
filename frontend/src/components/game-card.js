@@ -20,6 +20,7 @@ export default function BasicCard() {
     const [option, setOption] = useState('');
     const [diceRollValue, setDiceRollValue] = useState([0, 0]);
     const [displayDiceRoll, setDisplayDiceRoll] = useState(false);
+    const [changedAmount, setChangedAmount] = useState(0);
 
     const handleBet = (val) => {
         setBet(val);
@@ -92,9 +93,11 @@ export default function BasicCard() {
             bet: bet
         })
             .then(response => {
-                console.log(response.data.updatedAmount);
-                if (response.data.updatedAmount !== undefined) {
+                if (response.data.updatedAmount && response.data.changedAmount) {
+                    console.log("Updated Amount:", response.data.updatedAmount);
+                    console.log("Changed Amount:",response.data.changedAmount);
                     setAmount(response.data.updatedAmount);
+                    setChangedAmount(response.data.changedAmount);
                 }
             })
             .catch(error => {
@@ -143,20 +146,18 @@ export default function BasicCard() {
                             <Button onClick={() => handleBet(500)}>500</Button>
                         </ButtonGroup>
                     </Grid>
-
                     <Grid item xs={12} align='left'>
                         <Typography variant="h5" gutterBottom sx={{ marginTop: '15px', marginBottom: '15px' }}>
                             Choose Bet Option:
                             <br />
                         </Typography>
                     </Grid>
-
                     <Grid item xs={12} align='left'>
                         <BasicSelect option={option} setOption={setOption} />
                     </Grid>
 
                     <Grid item xs={12} align='center'>
-                        <DiceRollResult diceRollValue={diceRollValue} displayDiceRoll={displayDiceRoll} />
+                        <DiceRollResult diceRollValue={diceRollValue} displayDiceRoll={displayDiceRoll} changedAmount={changedAmount}/>
                     </Grid>
 
                     <Grid item xs={12} align='left'>

@@ -13,6 +13,7 @@ const validBets = [100, 200, 500];
 
 let currentResult = '';
 let currentSum = 0
+let changedAmount = 0;
 
 const luckyNumber = 'luckyNumber';
 const below7 = 'below7';
@@ -31,7 +32,7 @@ cors({ credentials: true, origin: true , exposedHeaders: ['Access-Control-Allow-
 
 
 app.listen(4000, () => {
-    console.log('Server is running on port 3000!');
+    console.log('Server is running on port 4000!');
 });
 
 
@@ -105,15 +106,18 @@ app.post('/update-amount', (req, res) => {
 
     switch (currentResult) {
         case win:
-            updatedAmount = amount + bet * 2;
+            changedAmount = bet * 2;
+            updatedAmount = amount + changedAmount;
             break;
 
         case loss:
+            changedAmount = -bet;
             updatedAmount = amount;
             break;
 
         case luckyWin:
-            updatedAmount = amount + bet * 5;
+            changedAmount = bet * 5;
+            updatedAmount = amount + changedAmount;
             break;
 
         default:
@@ -122,9 +126,9 @@ app.post('/update-amount', (req, res) => {
             return;
     }
 
-    console.log(updatedAmount);
+    console.log(updatedAmount, changedAmount);
 
-    res.send({ updatedAmount });
+    res.json({ updatedAmount, changedAmount });
 });
 
 

@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
 
-export default function DiceRollResult({ diceRollValue, displayDiceRoll }) {
+export default function DiceRollResult({ diceRollValue, displayDiceRoll, changedAmount}) {
     return (
         <div>
             {displayDiceRoll && (
@@ -22,8 +22,14 @@ export default function DiceRollResult({ diceRollValue, displayDiceRoll }) {
                             <Typography variant="h6">{diceRollValue[1]}</Typography>
                         </Box>
                     </Grid>
+                    <Grid item xs={12}>
+                        {changedAmount > 0 ? (
+                            <Typography variant="h6">You Won: {changedAmount}</Typography>
+                        ) : (
+                            <Typography variant="h6">You Lost: {Math.abs(changedAmount)}</Typography>
+                        )}
+                    </Grid>
                 </Grid>
-
             )}
         </div>
     );
